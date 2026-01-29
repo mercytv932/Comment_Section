@@ -22,8 +22,6 @@
   </div>
 
 
-
-
   <script>
 const user = document.querySelector("#user");
 const comment = document.querySelector("#comment");
@@ -86,3 +84,24 @@ function escapeHtml(str){
   const safeComment = escapeHTML(userInput);
   const safeName = escapeHTML(userName);
 }
+
+
+const comments = {
+  id: Date.now(),
+  text: commentText,
+  author: authorName,
+  timestamp: new Date().toISOString()
+};
+
+comments.push(newComment);
+saveComments(comments);
+
+function saveComments(commentsArray){
+  const jsonComments = JSON.stringify(commentsArray);
+
+  localStorage.setItem(COMMENTS_STORAGE_KEY, jsonComments);
+}
+
+  </script>
+</body>
+</html>
