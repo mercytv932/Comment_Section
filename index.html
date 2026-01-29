@@ -6,21 +6,21 @@
   <title>Comment section</title>
 </head>
 <body>
-  
-  <form action="/submit_comment" method="post">
+  <div id="comment-form">
     <input type="text" placeholder="name" id="user"> <br>
     <textarea name="user_comment" id="comment" placeholder="comment..."></textarea> <br>
     <button class="submit">Submit</button>
     <div id="commentsDisplay"></div>
 
-    <div>
+</div>
 
-      <h3>Latest comment</h3>
-      <div id="latesComment"></div>
+  <div>
 
-    </div>
+    <h3>Latest comment</h3>
+    <div id="latesComment"></div>
 
-  </form>
+  </div>
+
 
 
 
@@ -28,13 +28,13 @@
 const user = document.querySelector("#user");
 const comment = document.querySelector("#comment");
 const submit = document.querySelector(".submit");
-const commentsDisplay = document.querySelector("#commentwDisplay");
+const commentsDisplay = document.querySelector("#commentsDisplay");
 
 
 
-function createCommentObject(type, commentText){
+function createCommentObject(name, commentText){
   const newComment = {
-    id: Date.now().toString()+ Math.random(36).toString. subtr(2,9),
+    id: Date.now().toString()+ Math.random().toString(36). substr(2,9),
     name: name,
     comment: commentText,
 
@@ -44,6 +44,18 @@ function createCommentObject(type, commentText){
 
   return newComment;
 }
+
+submit.addEventListener("click", function(event){
+  event.preventDefault();
+
+  const nameValue = user.value;
+  const commentValue = comment.value;
+
+  const newComment = createCommentObject(nameValue, commentValue);
+  console.log(newComment);
+});
+
+
 
   </script>
 </body>
