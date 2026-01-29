@@ -31,7 +31,7 @@ const submit = document.querySelector(".submit");
 const commentsDisplay = document.querySelector("#commentsDisplay");
 
 
-
+//comment code
 function createCommentObject(name, commentText){
   const newComment = {
     id: Date.now().toString()+ Math.random().toString(36). substr(2,9),
@@ -45,6 +45,7 @@ function createCommentObject(name, commentText){
   return newComment;
 }
 
+//submit comment code
 submit.addEventListener("click", function(event){
   event.preventDefault();
 
@@ -55,8 +56,20 @@ submit.addEventListener("click", function(event){
   console.log(newComment);
 });
 
+//display a comment code
+const newDiv = document.querySelector("div");
 
+const newHTag = document.querySelector("h3");
+newHTag.style.fontWeight = "bold";
+newHTag.innerText = "User Name";
 
-  </script>
-</body>
-</html>
+const newPTag = document.querySelector("p");
+newPTag.innerText = "This is the comment  text.";
+
+const timeSpan = document.createElement("span");
+timeSpan.innerText = new Date().toLocalString();
+
+newDiv.appendChild(newHTag);
+newDiv.appendChild(newPTag);
+newDiv.appendChild(timeSpan);
+commentsDisplay.appendChild(newDiv);
