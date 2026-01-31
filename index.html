@@ -35,12 +35,6 @@ let comments = [];
 function escapeHtml(str){
   if(!str) return'';
   return str.replace(/</g, "&lt;"). replace(/>/g, "&gt;");
-
-  // const userInput = "<script> alert ('xss') <script>";
-  // const userName = "<b> John </b>";
-
-  // const safeComment = escapeHTML(userInput);
-  // const safeName = escapeHTML(userName);
 }
 
 
@@ -118,3 +112,4 @@ loadComments();
   </script>
 </body>
 </html>
+
