@@ -28,20 +28,56 @@ const comment = document.querySelector("#comment");
 const submit = document.querySelector(".submit");
 const commentsDisplay = document.querySelector("#commentsDisplay");
 
+let comments = [];
+
+
+//sanitize input/Esacpe function code
+function escapeHtml(str){
+  if(!str) return'';
+  return str.replace(/</g, "&lt;"). replace(/>/g, "&gt;");
+
+  // const userInput = "<script> alert ('xss') <script>";
+  // const userName = "<b> John </b>";
+
+  // const safeComment = escapeHTML(userInput);
+  // const safeName = escapeHTML(userName);
+}
+
 
 //comment code
 function createCommentObject(name, commentText){
   const newComment = {
     id: Date.now().toString()+ Math.random().toString(36). substr(2,9),
-    name: name,
-    comment: commentText,
-
+    name: escapeHtml(name),
+    comment: escapeHtml(commentText),
     timestamp: new Date().toISOString()
-
   };
-
   return newComment;
 }
+
+  //display a comment code
+
+  function displayComment(CommentObj){
+    
+const newDiv = document.createElement("div");
+
+const newHTag = document.createElement("h3");
+newHTag.style.fontWeight = "bold";
+newHTag.textContent = CommentObj.name;
+
+const newPTag = document.createElement("p");
+newPTag.textContent = CommentObj.comment;
+
+const timeSpan = document.createElement("span");
+timeSpan.textContent = new Date(CommentObj.timestamp).toLocaleString();
+
+newDiv.appendChild(newHTag);
+newDiv.appendChild(newPTag);
+newDiv.appendChild(timeSpan);
+
+commentsDisplay.appendChild(newDiv);
+};
+
 
 //submit comment code
 submit.addEventListener("click", function(event){
@@ -50,57 +86,18 @@ submit.addEventListener("click", function(event){
   const nameValue = user.value;
   const commentValue = comment.value;
 
+  if(!nameValue || !commentValue) return; //don't submity empty blanks
+
   const newComment = createCommentObject(nameValue, commentValue);
-  console.log(newComment);
+
+  comments.push(newComment);
+  localStorage.setItem('comments', JSON.stringify(comments));
+
+  displayComment(newComment);
+
+  user.value = "";
+  comment.value = "";
 });
-
-//display a comment code
-const newDiv = document.querySelector("div");
-
-const newHTag = document.querySelector("h3");
-newHTag.style.fontWeight = "bold";
-newHTag.innerText = "User Name";
-
-const newPTag = document.querySelector("p");
-newPTag.innerText = "This is the comment  text.";
-
-const timeSpan = document.createElement("span");
-timeSpan.innerText = new Date().toLocalString();
-
-newDiv.appendChild(newHTag);
-newDiv.appendChild(newPTag);
-newDiv.appendChild(timeSpan);
-commentsDisplay.appendChild(newDiv);
-
-
-//sanitize input/Esacpe function code
-function escapeHtml(str){
-  if(!str) return'';
-  return str.replace(/</g, "&lt;"). replace(/>/g, "&gt;");
-
-  const userInput = "<script> alert ('xss') <script>";
-  const userName = "<b> John </b>";
-
-  const safeComment = escapeHTML(userInput);
-  const safeName = escapeHTML(userName);
-}
-
-
-const comments = {
-  id: Date.now(),
-  text: commentText,
-  author: authorName,
-  timestamp: new Date().toISOString()
-};
-
-comments.push(newComment);
-saveComments(comments);
-
-function saveComments(commentsArray){
-  const jsonComments = JSON.stringify(commentsArray);
-
-  localStorage.setItem(COMMENTS_STORAGE_KEY, jsonComments);
-}
 
   </script>
 </body>
