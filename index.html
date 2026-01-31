@@ -16,7 +16,7 @@
 
   <div>
 
-    <h3>Latest comment</h3>
+    <h3>Latest comments</h3>
     <div id="latesComment"></div>
 
   </div>
@@ -35,12 +35,6 @@ let comments = [];
 function escapeHtml(str){
   if(!str) return'';
   return str.replace(/</g, "&lt;"). replace(/>/g, "&gt;");
-
-  // const userInput = "<script> alert ('xss') <script>";
-  // const userName = "<b> John </b>";
-
-  // const safeComment = escapeHTML(userInput);
-  // const safeName = escapeHTML(userName);
 }
 
 
@@ -55,8 +49,8 @@ function createCommentObject(name, commentText){
   return newComment;
 }
 
-  //display a comment code
 
+  //display a comment code
   function displayComment(CommentObj){
     
 const newDiv = document.createElement("div");
@@ -79,6 +73,12 @@ commentsDisplay.appendChild(newDiv);
 };
 
 
+//delete commnet code
+const deleteBtn = document.createElement("button");
+deleteBtn.textContent = "Delete";
+deleteBtn.style.cursor = "pointer";
+
+
 //submit comment code
 submit.addEventListener("click", function(event){
   event.preventDefault();
@@ -98,6 +98,7 @@ submit.addEventListener("click", function(event){
   user.value = "";
   comment.value = "";
 });
+
 
 //character length code
 user.addEventListener("user", function(){
@@ -120,7 +121,7 @@ comment.addEventListener("comment", function(){
   }
 });
 
-
+//load comment code
 function loadComments(){
 
   const comments = localStorage.getItem('comments');
@@ -135,7 +136,6 @@ function loadComments(){
   })
 }
 loadComments();
-
 
   </script>
 </body>
