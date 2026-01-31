@@ -7,8 +7,8 @@
 </head>
 <body>
   <div id="comment-form">
-    <input type="text" placeholder="name" id="user"> <br>
-    <textarea name="user_comment" id="comment" placeholder="comment..."></textarea> <br>
+    <input type="text" placeholder="name" id="user" maxlength="50"> <br>
+    <textarea name="user_comment" id="comment" placeholder="comment..." maxlength="500"></textarea> <br>
     <button class="submit">Submit</button>
     <div id="commentsDisplay"></div>
 
@@ -35,6 +35,12 @@ let comments = [];
 function escapeHtml(str){
   if(!str) return'';
   return str.replace(/</g, "&lt;"). replace(/>/g, "&gt;");
+
+  // const userInput = "<script> alert ('xss') <script>";
+  // const userName = "<b> John </b>";
+
+  // const safeComment = escapeHTML(userInput);
+  // const safeName = escapeHTML(userName);
 }
 
 
@@ -93,6 +99,27 @@ submit.addEventListener("click", function(event){
   comment.value = "";
 });
 
+//character length code
+user.addEventListener("user", function(){
+
+  if(count >= max){
+    user.style.display = "block";
+
+  } else if(count < max){
+    return`user name too long!`;
+  }
+
+});
+
+comment.addEventListener("comment", function(){
+
+  if(count >= max){
+    comment.style.display = "block";
+  } else if(count < max){
+    return`text too long!`
+  }
+});
+
 
 function loadComments(){
 
@@ -109,7 +136,7 @@ function loadComments(){
 }
 loadComments();
 
+
   </script>
 </body>
 </html>
-
