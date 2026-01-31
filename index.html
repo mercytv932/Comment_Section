@@ -99,6 +99,22 @@ submit.addEventListener("click", function(event){
   comment.value = "";
 });
 
+
+function loadComments(){
+
+  const comments = localStorage.getItem('comments');
+  const comment = JSON.parse(comments);
+  
+  comment.forEach(c =>{
+    console.log(c.comment);
+  });
+
+  comment.forEach(c =>{
+    displayComment(c);
+  })
+}
+loadComments();
+
   </script>
 </body>
 </html>
