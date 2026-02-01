@@ -110,6 +110,12 @@ CommentCounter.id = "commentCounter";
 comment.after(commentCounter);
 
 
+user.addEventListener("input", function(){
+  const count = user.value.length;
+  const max = 50;
+  userCounter.textContent = `${count}/${max};`;
+});
+
 
 //load comment code
 function loadComments(){
