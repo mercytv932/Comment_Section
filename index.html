@@ -116,6 +116,11 @@ user.addEventListener("input", function(){
   userCounter.textContent = `${count}/${max};`;
 });
 
+comment.addEventListener("input", function(){
+  const count = comment.value.length;
+  const max = 500;
+  commentCounter.textContent = `${count}/${max}`;
+})
 
 //load comment code
 function loadComments(){
