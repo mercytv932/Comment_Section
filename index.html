@@ -101,25 +101,15 @@ submit.addEventListener("click", function(event){
 
 
 //character length code
-user.addEventListener("user", function(){
+const userCounter = document.createElement("span");
+userCounter.id = "userCounter";
+user.after(CommentCounter);
 
-  if(count >= max){
-    user.style.display = "block";
+const CommentCounter = document.createElement("span");
+CommentCounter.id = "commentCounter";
+comment.after(commentCounter);
 
-  } else if(count < max){
-    return`user name too long!`;
-  }
 
-});
-
-comment.addEventListener("comment", function(){
-
-  if(count >= max){
-    comment.style.display = "block";
-  } else if(count < max){
-    return`text too long!`
-  }
-});
 
 //load comment code
 function loadComments(){
