@@ -63,7 +63,7 @@ const newPTag = document.createElement("p");
 newPTag.textContent = CommentObj.comment;
 
 const timeSpan = document.createElement("span");
-timeSpan.textContent ="Posted on:" + new Date(CommentObj.timestamp).toLocaleString();
+timeSpan.textContent ="Posted on: " + new Date(CommentObj.timestamp).toLocaleString();
 
 
 //delete commnet code
@@ -84,7 +84,17 @@ commentsDisplay.appendChild(newDiv);
 
 };
 
-//dele
+//deleteComment code
+
+function deleteComment(id){
+  comments = comments.filter(c => c.id !==id); //remove from array
+
+  localStorage.setItem('comments', JSON.stringify(comments)); //update the localStorage
+
+   //refresh display
+  commentsDisplay.innerHTML = "";
+  comments.forEach( c => displayComment(c));
+}
 
 
 //submit comment code
@@ -111,7 +121,7 @@ submit.addEventListener("click", function(event){
 //character length code
 const userCounter = document.createElement("span");
 userCounter.id = "userCounter";
-user.after(commentCounter);
+user.after(userCounter);
 
 const commentCounter = document.createElement("span");
 commentCounter.id = "commentCounter";
@@ -134,7 +144,6 @@ comment.addEventListener("input", function(){
 function loadComments(){
 
   const storedComments = localStorage.getItem('comments');
-  const comment = JSON.parse(comments);
 
   if(storedComments){
     comments = JSON.parse(storedComments);
