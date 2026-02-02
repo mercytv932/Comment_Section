@@ -63,7 +63,7 @@ const newPTag = document.createElement("p");
 newPTag.textContent = CommentObj.comment;
 
 const timeSpan = document.createElement("span");
-timeSpan.textContent = new Date(CommentObj.timestamp).toLocaleString();
+timeSpan.textContent ="Posted on:" + new Date(CommentObj.timestamp).toLocaleString();
 
 
 //delete commnet code
@@ -74,6 +74,7 @@ deleteBtn.addEventListener("click", function(){
   deleteComment(CommentObj.id);
 });
 
+
 newDiv.appendChild(newHTag);
 newDiv.appendChild(newPTag);
 newDiv.appendChild(timeSpan);
@@ -82,6 +83,8 @@ newDiv.appendChild(deleteBtn);
 commentsDisplay.appendChild(newDiv);
 
 };
+
+//dele
 
 
 //submit comment code
@@ -108,17 +111,17 @@ submit.addEventListener("click", function(event){
 //character length code
 const userCounter = document.createElement("span");
 userCounter.id = "userCounter";
-user.after(CommentCounter);
+user.after(commentCounter);
 
-const CommentCounter = document.createElement("span");
-CommentCounter.id = "commentCounter";
+const commentCounter = document.createElement("span");
+commentCounter.id = "commentCounter";
 comment.after(commentCounter);
 
 
 user.addEventListener("input", function(){
   const count = user.value.length;
   const max = 50;
-  userCounter.textContent = `${count}/${max};`;
+  userCounter.textContent = `${count}/${max}`;
 });
 
 comment.addEventListener("input", function(){
@@ -130,19 +133,17 @@ comment.addEventListener("input", function(){
 //load comment code
 function loadComments(){
 
-  const comments = localStorage.getItem('comments');
+  const storedComments = localStorage.getItem('comments');
   const comment = JSON.parse(comments);
-  
-  comment.forEach(c =>{
-    console.log(c.comment);
-  });
 
-  comment.forEach(c =>{
-    displayComment(c);
-  })
+  if(storedComments){
+    comments = JSON.parse(storedComments);
+    comments.forEach(c => displayComment(c));
+  }
+
 }
-loadComments();
 
+loadComments();
   </script>
 </body>
 </html>
