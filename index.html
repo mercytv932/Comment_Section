@@ -106,6 +106,18 @@ submit.addEventListener("click", function(event){
 
   if(!nameValue || !commentValue) return; //don't submity empty blanks
 
+    const now = Date.now();
+  const lastComment = localStorage.getItem('lastCommentTime') || 0;
+  const limit = 30 * 1000; // 30 seconds
+
+  if(now - lastComment < limit) {
+    const remaining = Math.ceil((limit - (now - lastComment)) / 1000);
+    alert(`Please wait ${remaining} seconds beofre commenting again.`);
+    return;
+  }
+
+  localStorage.setItem('lastCommentTime', now);
+  
   const newComment = createCommentObject(nameValue, commentValue);
 
   comments.push(newComment);
@@ -115,6 +127,7 @@ submit.addEventListener("click", function(event){
 
   user.value = "";
   comment.value = "";
+  
 });
 
 
@@ -147,7 +160,7 @@ comment.addEventListener("input", function(){
       return new Date(b.timestamp) - new Date(a.timestamp);
     });
   } 
-  
+
 //load comment code
 function loadComments(){
 
@@ -164,3 +177,11 @@ loadComments();
   </script>
 </body>
 </html>
+
+
+Step 13: Add basic rate limiting (25 min)
+
+Store timestamp of last comment in localStorage
+Don't allow new comment within 30 seconds
+Show "Please wait X seconds"
+Test: Try posting twice quickly
