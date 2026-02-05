@@ -81,11 +81,10 @@ newDiv.appendChild(timeSpan);
 newDiv.appendChild(deleteBtn);
 
 commentsDisplay.appendChild(newDiv);
-
 };
 
+    
 //deleteComment code
-
 function deleteComment(id){
   comments = comments.filter(c => c.id !==id); //remove from array
 
@@ -185,4 +184,5 @@ Store timestamp of last comment in localStorage
 Don't allow new comment within 30 seconds
 Show "Please wait X seconds"
 Test: Try posting twice quickly
+
 
