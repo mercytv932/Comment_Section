@@ -1,0 +1,63 @@
+
+    #user{
+      display: block;
+      margin: 10px;
+      border-radius: 10px;
+      padding: 10px;
+      width: 100%;
+    }
+
+    #comment{
+      display: block;
+      margin-top: 5px;
+      margin-right: 10px;
+      margin-left: 10px;
+      border-radius: 10px;
+      padding: 10px;
+      width: 100%;
+    }
+
+    .submit{
+      border: 0.5 solid;
+      border-radius: 5px;
+      padding: 5px;
+      background-color:blanchedalmond;
+      cursor: pointer;
+      margin-left: 15px;
+    }
+    .submit:hover{
+      background-color: rgb(255, 201, 120);
+      transition: 0.2s ease-in-out;
+      transform: scale(1.07);
+      border-color: gray;
+    }
+
+    
+    #commentsDisplay div{
+      border: 0.5px solid;
+      padding: 12px;
+      margin: 8px;
+    }
+
+    #commentsDisplay div:nth-child(odd){
+      background-color: aliceblue;
+    }
+    #commentsDisplay div:nth-child(even){
+      background-color: lightyellow;
+    }
+
+    #comment-form{
+      margin: 0 auto;
+      max-width: 600px;
+    }
+
+    .latest-container{
+      margin: 0 auto;
+      align-items:center ;
+      justify-content:center ;
+      place-items: center;
+    }
+
+    .button{
+      background-color: rgb(252, 76, 76);
+    }
