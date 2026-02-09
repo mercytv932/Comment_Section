@@ -38,9 +38,15 @@
       margin: 8px;
     }
 
+    #commentsDisplay div:hover{
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
     #commentsDisplay div:nth-child(odd){
       background-color: aliceblue;
       border-radius: 15px;
+      padding: 15px;
+      margin: 10px;
     }
     #commentsDisplay div:nth-child(even){
       background-color: lightyellow;
@@ -64,3 +70,5 @@
     .button{
       background-color: rgb(252, 76, 76);
     }
+
+    
