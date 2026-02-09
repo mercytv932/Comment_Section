@@ -39,8 +39,8 @@
     }
 
     #commentsDisplay div:hover{
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
+      box-shadow: 10px 8px 0px rgb(191 219 254);
+        }
 
     #commentsDisplay div:nth-child(odd){
       background-color: aliceblue;
