@@ -45,6 +45,7 @@ timeSpan.textContent = new Date(CommentObj.timestamp).toLocaleString();
 const deleteBtn = document.createElement("button");
 deleteBtn.textContent = "Delete";
 deleteBtn.style.cursor = "pointer";
+deleteBtn.className = "deleteBtn";
 deleteBtn.addEventListener("click", function(){
   deleteComment(CommentObj.id);
 
@@ -58,7 +59,6 @@ newDiv.appendChild(timeSpan);
 newDiv.appendChild(deleteBtn);
 
 commentsDisplay.appendChild(newDiv);
-
 };
 
 //deleteComment code
