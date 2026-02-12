@@ -54,10 +54,15 @@
     }
 
     #commentsDisplay div:nth-child(odd):hover{
-      box-shadow: 10px 8px 0px rgb(191 219 254);
+      /* box-shadow: 10px 8px 0px rgb(191 219 254); */
+      box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+      transition: box-shadow 0.2s ease-in;
+
     }
     #commentsDisplay div:nth-child(even):hover{
-      box-shadow: -10px -8px 0px rgb(167 243 208);
+      /* box-shadow: -10px -8px 0px rgb(167 243 208); */
+      box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+      transition: box-shadow 0.2s ease-in;
     }
 
     #comment-form{
