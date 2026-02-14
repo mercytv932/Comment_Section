@@ -85,7 +85,7 @@ submit.addEventListener("click", function(event){
 
     const now = Date.now();
   const lastComment = localStorage.getItem('lastCommentTime') || 0;
-  const limit = 30 * 1000; // 30 seconds
+  const limit = 15 * 1000; // 30 seconds
 
   if(now - lastComment < limit) {
     const remaining = Math.ceil((limit - (now - lastComment)) / 1000);
@@ -126,7 +126,7 @@ user.addEventListener("input", function(){
 
 comment.addEventListener("input", function(){
   const count = comment.value.length;
-  const max = 500;
+  const max = 5000;
   commentCounter.textContent = `${count}/${max}`;
 })
 
