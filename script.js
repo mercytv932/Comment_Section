@@ -107,6 +107,23 @@ submit.addEventListener("click", function(event){
   
 });
 
+//press ENTER to add the comment code
+
+user.addEventListener("keydown", function(event){
+  if(event.key === "Enter" && !event.shiftKey){
+    event.preventDefault();
+    submit.click();
+  }
+});
+
+comment.addEventListener("keydown", function(event){
+  if(event.key === "Enter" && !event.shiftKey){
+    event.preventDefault();
+    submit.click();
+  }
+});
+
+
 
 //character length code
 const userCounter = document.createElement("span");
